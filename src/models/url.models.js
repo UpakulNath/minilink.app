@@ -25,7 +25,7 @@ const urlSchema = new Schema(
   { timestamps: true },
 );
 
-const hashids = new Hashids(process.env.SECRET_SALT, 6);
+const hashids = new Hashids(process.env.SECRET_SALT, 4);
 
 urlSchema.pre("save", function (next) {
   if (!this.short_code) {
