@@ -2,12 +2,12 @@ const form = document.getElementById("shorten-form");
 const resultDiv = document.getElementById("result");
 
 form.addEventListener("submit", async (e) => {
-  e.preventDefault(); // prevent page reload
+  e.preventDefault(); 
 
   const longUrl = document.getElementById("longUrl").value;
 
   try {
-    const response = await fetch("/api/v1/urlUser/generateURL", {
+    const response = await fetch(`${window.CONFIG.API_BASE_URL}/generateURL`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,6 +21,12 @@ form.addEventListener("submit", async (e) => {
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong");
     }
+
+    if (!data.data || !data.data.shortUrl) {
+      throw new Error("Invalid response from server");
+    }
+
+    
 
     const shortUrl = data.data.shortUrl;
 

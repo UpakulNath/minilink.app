@@ -8,7 +8,6 @@ export const generateShortUrl = asyncHandler(async (req, res) => {
   const url = await Url.create({ long_url });
   const shortCode = url.short_code;
   const shortUrl = `${process.env.BASE_URL}/${shortCode}`;
-  console.log("BASE_URL =", process.env.BASE_URL);
 
   return res
     .status(200)
