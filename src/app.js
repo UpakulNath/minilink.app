@@ -3,6 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/generatorUser.routes.js";
 import { redirectToLongUrl } from "./controllers/url.controllers.js";
+import path from "path";
+
 
 const app = express();
 
